@@ -1,6 +1,6 @@
 # Simple RAG ChatGPT
 
-一个适合 NLP / LLM 方向展示的简易 ChatGPT 项目：支持上传知识库文档、生成向量索引、检索相关片段，再通过 OpenAI API 生成带引用的回答。
+一个简易 ChatGPT 项目：支持上传知识库文档、生成向量索引、检索相关片段，再通过 OpenAI API 生成带引用的回答。
 
 ## 功能
 
