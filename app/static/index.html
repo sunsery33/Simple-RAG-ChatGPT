@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RAG ChatGPT</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="/static/app.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <header class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <i data-lucide="bot"></i>
+          </div>
+          <div>
+            <h1>RAG ChatGPT</h1>
+            <p id="statusText">检查服务中</p>
+          </div>
+        </header>
+
+        <section class="side-section">
+          <div class="section-title">
+            <span>知识库</span>
+            <button id="refreshDocsBtn" class="icon-button" type="button" title="刷新文档">
+              <i data-lucide="refresh-cw"></i>
+            </button>
+          </div>
+
+          <label id="dropzone" class="dropzone" for="fileInput">
+            <i data-lucide="upload-cloud"></i>
+            <span>上传 .txt / .md / .pdf / .docx</span>
+            <input id="fileInput" type="file" accept=".txt,.md,.markdown,.pdf,.docx" />
+          </label>
+
+          <div id="uploadState" class="muted-line">等待上传</div>
+          <div id="documentList" class="document-list"></div>
+        </section>
+
+        <section class="side-section controls">
+          <div class="section-title">
+            <span>检索设置</span>
+            <i data-lucide="sliders-horizontal" aria-hidden="true"></i>
+          </div>
+
+          <label class="toggle-row">
+            <span>启用 RAG</span>
+            <input id="ragToggle" type="checkbox" checked />
+          </label>
+
+          <label class="number-row">
+            <span>引用片段数</span>
+            <input id="topKInput" type="number" min="0" max="12" value="5" />
+          </label>
+        </section>
+      </aside>
+
+      <main class="chat-pane">
+        <header class="chat-header">
+          <div>
+            <h2>对话</h2>
+            <p id="modelText">模型加载中</p>
+          </div>
+          <div class="header-actions">
+            <button id="clearChatBtn" class="ghost-button" type="button">
+              <i data-lucide="eraser"></i>
+              <span>清空</span>
+            </button>
+          </div>
+        </header>
+
+        <div id="errorBanner" class="error-banner" hidden></div>
+        <section id="messages" class="messages" aria-live="polite"></section>
+
+        <form id="chatForm" class="composer">
+          <textarea
+            id="messageInput"
+            rows="1"
+            placeholder="问一个问题，或让它基于知识库总结、改写、生成方案"
+          ></textarea>
+          <button id="sendBtn" class="send-button" type="submit" title="发送">
+            <i data-lucide="send-horizontal"></i>
+          </button>
+        </form>
+      </main>
+    </div>
+  </body>
+</html>
+
